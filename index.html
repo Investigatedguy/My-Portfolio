@@ -3,45 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Investigatedguy's Portfolio</title>
+    
+    <!-- [M1] -->
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 0; 
-            padding: 2rem; 
-            background: #0d1117; 
-            color: #c9d1d9; 
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #0d1117;
+            color: #c9d1d9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        header { 
-            text-align: center; 
-            padding-bottom: 2rem; 
-            border-bottom: 1px solid #30363d; 
+
+        /* [M2] */
+        .portfolio-container {
+            width: 90%;
+            max-width: 900px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
-        h1 { color: #58a6ff; }
-        .project-card { 
-            background: #161b22; 
-            border: 1px solid #30363d; 
-            padding: 1.5rem; 
-            margin: 1rem 0; 
-            border-radius: 8px; 
+
+        /* [M3] */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #30363d;
         }
-        a { color: #58a6ff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #58a6ff;
+        }
+
+        header p {
+            margin: 0;
+            color: #8b949e;
+            font-size: 1rem;
+        }
+
+        /* [M4] */
+        .nav-link {
+            text-decoration: none;
+            color: #c9d1d9;
+            background: #21262d;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            border: 1px solid #30363d;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #30363d;
+            color: white;
+            border-color: #58a6ff;
+        }
+
+        /* [M5] */
+        main {
+            padding: 2rem;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .project-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .project-item {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-title {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.25rem;
+        }
+
+        .project-title:hover {
+            color: #58a6ff;
+        }
+
+        .project-language {
+            font-family: monospace;
+            background-color: #30363d;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+
+        .project-description {
+            margin: 1rem 0 0;
+            color: #8b949e;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Coding Portfolio</h1>
-        <p>Software Developer | C++ & Web Projects</p>
-    </header>
 
-    <main>
-        <h2>My Projects</h2>
-        <div class="project-card">
-            <h3>C++ Project</h3>
-            <p>A description of my C++ application or algorithm.</p>
-            <a href="https://github.com/Investigatedguy">View on GitHub &rarr;</a>
-        </div>
-    </main>
+    <!-- [M6] -->
+    <div class="portfolio-container">
+        
+        <!-- [M7] -->
+        <header>
+            <div class="left-section">
+                <h1>Investigatedguy</h1>
+                <p>Software Developer | C++ & Web Engineering</p>
+            </div>
+            <!-- [M8] -->
+            <button class="nav-link active" onclick="openTab('projects', this)">Projects</button>
+        </header>
+
+        <!-- [M9] -->
+        <main>
+            <!-- [M10] -->
+            <div id="projects" class="tab-content active">
+                <h2>My Projects</h2>
+                
+                <ul class="project-list">
+                    <!-- [M11] -->
+                    <li class="project-item">
+                        <a href="https://github.com/Investigatedguy/project1" target="_blank" class="project-title">project1</a>
+                        <div>
+                            <span class="project-language">C++ / WebAssembly</span>
+                        </div>
+                        <p class="project-description">A high-performance calculation engine compiled for the web, showcasing advanced algorithm deployment and C++ integration.</p>
+                    </li>
+
+                    <!-- [M12] -->
+                    <li class="project-item">
+                        <a href="https://github.com/Investigatedguy/portfolio-site" target="_blank" class="project-title">portfolio-site</a>
+                        <div>
+                            <span class="project-language">HTML / CSS / JS</span>
+                        </div>
+                        <p class="project-description">The main site you are viewing now, built with clean semantics, CSS Grid/Flexbox, and static deployment using GitHub and Netlify.</p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- [M13] -->
+    <script>
+        function openTab(tabName, element) {
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            var navLinks = document.getElementsByClassName("nav-link");
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            element.classList.add("active");
+        }
+    </script>
 </body>
 </html>
