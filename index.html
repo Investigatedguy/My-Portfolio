@@ -99,7 +99,7 @@
             color: #ffffff;
         }
 
-        /* [M6] Central macOS Window Card */
+        /* [M6] Central Window Card */
         .window-card {
             background: #111111;
             border: 1px solid #222222;
@@ -115,28 +115,15 @@
             position: relative;
         }
 
-        /* [M7] Window Top Titlebar Dots */
+        /* [M7] Window Top Titlebar (Without Dots) */
         .window-header {
             background: #161616;
             padding: 12px 16px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid #222222;
+            height: 36px;
         }
-
-        .window-dots {
-            display: flex;
-            gap: 6px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
 
         /* [M8] Window Content Area / Tab Panes */
         .window-body {
@@ -235,7 +222,7 @@
         <header class="top-nav">
             <div class="brand-section">
                 <h1>Investigatedguy</h1>
-                <p>Software Developer</p>
+                <p>CS & Cybersecurity student @ Central State | C++ programmer & computer repair technician</p>
             </div>
 
             <!-- [M4] -->
@@ -254,14 +241,8 @@
         <!-- [M6] -->
         <div class="window-card">
             
-            <!-- [M7] -->
-            <div class="window-header">
-                <div class="window-dots">
-                    <div class="dot dot-red"></div>
-                    <div class="dot dot-yellow"></div>
-                    <div class="dot dot-green"></div>
-                </div>
-            </div>
+            <!-- [M7] Window titlebar with dots removed -->
+            <div class="window-header"></div>
 
             <!-- [M8] -->
             <div class="window-body">
@@ -272,12 +253,12 @@
                         I build high-performance systems, <span>algorithms & code.</span>
                     </h2>
                     <p class="intro-meta">
-                        <strong>C++ Developer & Tech Enthusiast.</strong> Based in your city.<br>
-                        Specializing in low-level engineering and modern web applications.
+                        <strong>CS & Cybersecurity student @ Central State</strong><br>
+                        C++ programmer & computer repair technician.
                     </p>
                 </div>
 
-                <!-- [M10] Info Tab Pane (Projects / Interactive View) -->
+                <!-- [M10] Info Tab Pane (Projects View) -->
                 <div id="info" class="tab-pane">
                     <h3 class="projects-heading">Featured Projects</h3>
                     
@@ -300,15 +281,12 @@
     <!-- [M11] Tab Switching Script Logic -->
     <script>
         function switchTab(tabId, buttonElement) {
-            // Hide all tab panes
             const panes = document.querySelectorAll('.tab-pane');
             panes.forEach(pane => pane.classList.remove('active'));
 
-            // Deactivate all switcher buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // Activate target pane and button
             document.getElementById(tabId).classList.add('active');
             buttonElement.classList.add('active');
         }
