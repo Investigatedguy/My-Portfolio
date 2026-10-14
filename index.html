@@ -3,199 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investigatedguy's Portfolio</title>
+    <title>Investigatedguy — Portfolio</title>
     
-    <!-- [M1] -->
+    <!-- [M1] Global Page Styling -->
     <style>
+        * { box-sizing: border-box; }
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #0d1117;
-            color: #c9d1d9;
+            background-color: #0b0b0b;
+            color: #ededed;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-        }
-
-        /* [M2] */
-        .portfolio-container {
-            width: 90%;
-            max-width: 900px;
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
-        /* [M3] */
-        header {
+        /* [M2] Main Layout Frame */
+        .portfolio-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
+        }
+
+        /* [M3] Top Navigation Bar */
+        .top-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid #30363d;
+            width: 100%;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: #58a6ff;
-        }
-
-        header p {
-            margin: 0;
-            color: #8b949e;
+        .brand-section h1 {
             font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+            color: #ffffff;
         }
 
-        /* [M4] */
-        .nav-link {
-            text-decoration: none;
-            color: #c9d1d9;
-            background: #21262d;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: bold;
+        .brand-section p {
+            font-size: 0.8rem;
+            color: #777777;
+            margin: 2px 0 0 0;
+        }
+
+        /* [M4] Center Pill Tabs Switcher */
+        .pill-switcher {
+            background: #161616;
+            border: 1px solid #262626;
+            padding: 4px;
+            border-radius: 30px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: #888888;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-            border: 1px solid #30363d;
+            transition: all 0.2s ease;
         }
 
-        .nav-link:hover, .nav-link.active {
-            background: #30363d;
-            color: white;
-            border-color: #58a6ff;
+        .tab-btn.active {
+            background: #262626;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
 
-        /* [M5] */
-        main {
-            padding: 2rem;
+        /* [M5] Top Right Header Links */
+        .external-links {
+            display: flex;
+            gap: 1.5rem;
         }
 
-        .tab-content {
+        .external-links a {
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .external-links a:hover {
+            color: #ffffff;
+        }
+
+        /* [M6] Central macOS Window Card */
+        .window-card {
+            background: #111111;
+            border: 1px solid #222222;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            width: 100%;
+            max-width: 900px;
+            height: 480px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* [M7] Window Top Titlebar Dots */
+        .window-header {
+            background: #161616;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #222222;
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        /* [M8] Window Content Area / Tab Panes */
+        .window-body {
+            padding: 3rem 4rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .tab-pane {
             display: none;
+            animation: fadeIn 0.3s ease;
         }
 
-        .tab-content.active {
+        .tab-pane.active {
             display: block;
         }
 
-        h2 {
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 1rem;
-            margin-top: 0;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .project-list {
-            list-style: none;
-            padding: 0;
+        /* [M9] Custom Introduction Typography Style */
+        .intro-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin: 0 0 2rem 0;
+            max-width: 700px;
+        }
+
+        .intro-title span {
+            color: #717171;
+            font-style: italic;
+        }
+
+        .intro-meta {
+            font-size: 0.95rem;
+            color: #888888;
+            line-height: 1.5;
             margin: 0;
         }
 
-        .project-item {
-            background: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+        .intro-meta strong {
+            color: #dddddd;
+            font-weight: 500;
         }
 
-        .project-item:last-child {
-            margin-bottom: 0;
+        /* [M10] Projects Grid / List Style inside Window */
+        .projects-heading {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 1.5rem 0;
+            color: #ffffff;
         }
 
-        .project-title {
-            color: white;
-            font-weight: bold;
+        .project-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #222222;
             text-decoration: none;
-            font-size: 1.25rem;
+            color: inherit;
+            transition: opacity 0.2s;
         }
 
-        .project-title:hover {
-            color: #58a6ff;
+        .project-row:hover {
+            opacity: 0.7;
         }
 
-        .project-language {
+        .project-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .project-tech {
+            font-size: 0.85rem;
+            color: #777777;
             font-family: monospace;
-            background-color: #30363d;
-            padding: 4px 8px;
-            border-radius: 4px;
-            color: white;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            display: inline-block;
-        }
-
-        .project-description {
-            margin: 1rem 0 0;
-            color: #8b949e;
-            line-height: 1.6;
         }
     </style>
 </head>
 <body>
 
-    <!-- [M6] -->
-    <div class="portfolio-container">
+    <!-- [M2] -->
+    <div class="portfolio-wrapper">
         
-        <!-- [M7] -->
-        <header>
-            <div class="left-section">
+        <!-- [M3] -->
+        <header class="top-nav">
+            <div class="brand-section">
                 <h1>Investigatedguy</h1>
-                <p>Software Developer | C++ & Web Engineering</p>
+                <p>Software Developer</p>
             </div>
-            <!-- [M8] -->
-            <button class="nav-link active" onclick="openTab('projects', this)">Projects</button>
+
+            <!-- [M4] -->
+            <div class="pill-switcher">
+                <button class="tab-btn active" onclick="switchTab('work', this)">Work</button>
+                <button class="tab-btn" onclick="switchTab('info', this)">Info</button>
+            </div>
+
+            <!-- [M5] -->
+            <div class="external-links">
+                <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn ↗</a>
+                <a href="https://yourlink-to-resume.com" target="_blank">Resume ↗</a>
+            </div>
         </header>
 
-        <!-- [M9] -->
-        <main>
-            <!-- [M10] -->
-            <div id="projects" class="tab-content active">
-                <h2>My Projects</h2>
-                
-                <ul class="project-list">
-                    <!-- [M11] -->
-                    <li class="project-item">
-                        <a href="https://github.com/Investigatedguy/project1" target="_blank" class="project-title">project1</a>
-                        <div>
-                            <span class="project-language">C++ / WebAssembly</span>
-                        </div>
-                        <p class="project-description">A high-performance calculation engine compiled for the web, showcasing advanced algorithm deployment and C++ integration.</p>
-                    </li>
-
-                    <!-- [M12] -->
-                    <li class="project-item">
-                        <a href="https://github.com/Investigatedguy/portfolio-site" target="_blank" class="project-title">portfolio-site</a>
-                        <div>
-                            <span class="project-language">HTML / CSS / JS</span>
-                        </div>
-                        <p class="project-description">The main site you are viewing now, built with clean semantics, CSS Grid/Flexbox, and static deployment using GitHub and Netlify.</p>
-                    </li>
-                </ul>
+        <!-- [M6] -->
+        <div class="window-card">
+            
+            <!-- [M7] -->
+            <div class="window-header">
+                <div class="window-dots">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                </div>
             </div>
-        </main>
+
+            <!-- [M8] -->
+            <div class="window-body">
+                
+                <!-- [M9] Work Tab Pane (Default View) -->
+                <div id="work" class="tab-pane active">
+                    <h2 class="intro-title">
+                        I build high-performance systems, <span>algorithms & code.</span>
+                    </h2>
+                    <p class="intro-meta">
+                        <strong>C++ Developer & Tech Enthusiast.</strong> Based in your city.<br>
+                        Specializing in low-level engineering and modern web applications.
+                    </p>
+                </div>
+
+                <!-- [M10] Info Tab Pane (Projects / Interactive View) -->
+                <div id="info" class="tab-pane">
+                    <h3 class="projects-heading">Featured Projects</h3>
+                    
+                    <a href="https://github.com/Investigatedguy" target="_blank" class="project-row">
+                        <span class="project-name">High-Performance C++ Engine</span>
+                        <span class="project-tech">C++ / Algorithms</span>
+                    </a>
+                    
+                    <a href="https://github.com/Investigatedguy" target="_blank" class="project-row">
+                        <span class="project-name">Portfolio Web Client</span>
+                        <span class="project-tech">HTML / CSS / JS</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
 
     </div>
 
-    <!-- [M13] -->
+    <!-- [M11] Tab Switching Script Logic -->
     <script>
-        function openTab(tabName, element) {
-            var tabContents = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < tabContents.length; i++) {
-                tabContents[i].classList.remove("active");
-            }
+        function switchTab(tabId, buttonElement) {
+            // Hide all tab panes
+            const panes = document.querySelectorAll('.tab-pane');
+            panes.forEach(pane => pane.classList.remove('active'));
 
-            var navLinks = document.getElementsByClassName("nav-link");
-            for (var i = 0; i < navLinks.length; i++) {
-                navLinks[i].classList.remove("active");
-            }
+            // Deactivate all switcher buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
 
-            document.getElementById(tabName).classList.add("active");
-            element.classList.add("active");
+            // Activate target pane and button
+            document.getElementById(tabId).classList.add('active');
+            buttonElement.classList.add('active');
         }
     </script>
 </body>
