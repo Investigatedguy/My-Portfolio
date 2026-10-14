@@ -41,10 +41,11 @@
         }
 
         .brand-section h1 {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             margin: 0;
             color: #ffffff;
+            letter-spacing: -0.01em;
         }
 
         /* [M4] Center Pill Tabs Switcher */
@@ -61,7 +62,7 @@
             background: transparent;
             border: none;
             color: #888888;
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
@@ -80,7 +81,7 @@
             background: transparent;
             border: 1px solid #262626;
             color: #aaaaaa;
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
@@ -98,11 +99,11 @@
         .window-card {
             background: #111111;
             border: 1px solid #222222;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+            border-radius: 14px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.8);
             width: 100%;
-            max-width: 900px;
-            height: 520px;
+            max-width: 920px;
+            height: 540px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -117,12 +118,12 @@
             display: flex;
             align-items: center;
             border-bottom: 1px solid #222222;
-            height: 36px;
+            height: 38px;
         }
 
         /* [M8] Window Content Area / Tab Panes */
         .window-body {
-            padding: 2.5rem 3.5rem;
+            padding: 3rem 4rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -145,24 +146,32 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* [M9] Work Tab Layout (Avatar + Intro) */
+        /* [M9] Work Tab Layout (Enlarged Avatar + Stylish Text) */
         .work-container {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
+        /* Scaled up Profile Picture Frame */
         .avatar-box {
-            width: 150px;
-            height: 150px;
+            width: 210px;
+            height: 210px;
             border-radius: 50%;
-            background: #1a1a1a;
-            border: 2px solid #333333;
+            background: #181818;
+            border: 2px solid #2a2a2a;
             overflow: hidden;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .avatar-box:hover {
+            transform: scale(1.02);
+            border-color: #3b3b3b;
         }
 
         .avatar-box img {
@@ -172,24 +181,43 @@
         }
 
         .intro-content h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #ffffff;
-            margin: 0 0 1rem 0;
-            letter-spacing: -0.02em;
+            margin: 0 0 1.25rem 0;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
         }
 
         .intro-bullets {
             list-style: none;
             padding: 0;
             margin: 0;
-            color: #888888;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: #a0a0a0;
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
         .intro-bullets li {
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.2s ease;
+        }
+
+        .intro-bullets li:hover {
+            color: #ffffff;
+        }
+
+        /* Stylish accent indicator for each bullet */
+        .bullet-point {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #58a6ff;
+            display: inline-block;
+            flex-shrink: 0;
         }
 
         /* [M10] Credentials Tab Style */
@@ -201,76 +229,21 @@
             font-size: 1.8rem;
             font-weight: 600;
             color: #ffffff;
-            margin: 0 0 0.5rem 0;
-        }
-
-        .cred-subtitle {
-            font-size: 0.95rem;
-            color: #888888;
             margin: 0 0 1rem 0;
-            line-height: 1.5;
         }
 
-        .cred-item-box {
-            background: #161616;
-            border: 1px solid #222222;
-            padding: 0.85rem 1.25rem;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cred-item-title {
-            color: #dddddd;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .cred-link-btn {
-            color: #58a6ff;
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        .cred-link-btn:hover {
-            text-decoration: underline;
+        .blank-space {
+            color: #555555;
+            font-size: 0.9rem;
+            font-style: italic;
         }
 
         /* [M11] Projects Tab Style */
         .projects-heading {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            margin: 0 0 1.5rem 0;
+            margin: 0 0 1rem 0;
             color: #ffffff;
-        }
-
-        .project-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid #222222;
-            text-decoration: none;
-            color: inherit;
-            transition: opacity 0.2s;
-        }
-
-        .project-row:hover {
-            opacity: 0.7;
-        }
-
-        .project-name {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #ffffff;
-        }
-
-        .project-tech {
-            font-size: 0.85rem;
-            color: #777777;
-            font-family: monospace;
         }
 
         /* [M12] Contacts Modal Sheet Overlay */
@@ -381,16 +354,15 @@
                 <div id="work" class="tab-pane active">
                     <div class="work-container">
                         <div class="avatar-box">
-                            <!-- [AVATAR IMAGE] Points directly to Pfp.png -->
                             <img src="Pfp.png" alt="UserInTouch Avatar">
                         </div>
                         <div class="intro-content">
                             <h2>Welcome to my portfolio</h2>
                             <ul class="intro-bullets">
-                                <li>Cybersecurity & Computer Science Student</li>
-                                <li>Honors College Emissary | Social Media Coordinator</li>
-                                <li>Alpha Lambda Delta Honor Society Member</li>
-                                <li>C++ programmer & computer repair technician</li>
+                                <li><span class="bullet-point"></span> Cybersecurity & Computer Science Student</li>
+                                <li><span class="bullet-point"></span> Honors College Emissary | Social Media Coordinator</li>
+                                <li><span class="bullet-point"></span> Alpha Lambda Delta Honor Society Member</li>
+                                <li><span class="bullet-point"></span> C++ programmer & computer repair technician</li>
                             </ul>
                         </div>
                     </div>
@@ -398,56 +370,26 @@
 
                 <!-- [M10] Credentials Tab Pane -->
                 <div id="credentials" class="tab-pane">
-                    
-                    <!-- Section 1: Credentials / Resume -->
                     <div class="cred-section">
                         <h2 class="cred-title">Credentials</h2>
-                        <p class="cred-subtitle">Central State University — B.S. Computer Science & Cybersecurity Certificate (Expected 2029)[cite: 9]</p>
-                        
-                        <div class="cred-item-box">
-                            <span class="cred-item-title">Official Resume (PDF)</span>
-                            <a href="resume.pdf" target="_blank" class="cred-link-btn">View Resume ↗</a>
-                        </div>
+                        <div class="blank-space">[ Add your resume or credentials here ]</div>
                     </div>
 
-                    <!-- Section 2: Certifications -->
                     <div class="cred-section">
                         <h2 class="cred-title">Certifications</h2>
-                        
-                        <div class="cred-item-box">
-                            <span class="cred-item-title">CompTIA IT Fundamentals (ITF+)[cite: 10]</span>
-                            <span style="color:#666; font-size:0.8rem;">Certified</span>
-                        </div>
-                        <div class="cred-item-box">
-                            <span class="cred-item-title">IC3 Digital Literacy Certifications (Parts 1-3)[cite: 10]</span>
-                            <span style="color:#666; font-size:0.8rem;">Certified</span>
-                        </div>
+                        <div class="blank-space">[ Add your certifications here ]</div>
                     </div>
 
-                    <!-- Section 3: Publications -->
                     <div class="cred-section">
                         <h2 class="cred-title">Publications</h2>
-                        <div class="cred-item-box">
-                            <span class="cred-item-title">Research Papers & Articles</span>
-                            <span style="color:#666; font-size:0.8rem;">Coming Soon</span>
-                        </div>
+                        <div class="blank-space">[ Add your publications here ]</div>
                     </div>
-
                 </div>
 
-                <!-- [M11] Info / Projects Tab Pane -->
+                <!-- [M11] Info Tab Pane -->
                 <div id="info" class="tab-pane">
-                    <h3 class="projects-heading">Featured Projects</h3>
-                    
-                    <a href="https://github.com/Investigatedguy" target="_blank" class="project-row">
-                        <span class="project-name">High-Performance C++ Engine</span>
-                        <span class="project-tech">C++ / Algorithms</span>
-                    </a>
-                    
-                    <a href="https://github.com/Investigatedguy" target="_blank" class="project-row">
-                        <span class="project-name">Portfolio Web Client</span>
-                        <span class="project-tech">HTML / CSS / JS</span>
-                    </a>
+                    <h2 class="projects-heading">Projects</h2>
+                    <div class="blank-space">[ Add your projects here ]</div>
                 </div>
 
             </div>
@@ -468,7 +410,7 @@
 
             <a href="mailto:professionalkojo@gmail.com" class="contact-link-item">
                 <span>Email</span>
-                <span>professionalkojo@gmail.com[cite: 9]</span>
+                <span>professionalkojo@gmail.com</span>
             </a>
 
             <a href="https://www.linkedin.com/in/kojo-r-b9974337b/" target="_blank" class="contact-link-item">
