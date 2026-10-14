@@ -47,12 +47,6 @@
             color: #ffffff;
         }
 
-        .brand-section p {
-            font-size: 0.8rem;
-            color: #777777;
-            margin: 2px 0 0 0;
-        }
-
         /* [M4] Center Pill Tabs Switcher */
         .pill-switcher {
             background: #161616;
@@ -67,7 +61,7 @@
             background: transparent;
             border: none;
             color: #888888;
-            padding: 6px 18px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
@@ -81,22 +75,23 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.4);
         }
 
-        /* [M5] Top Right Header Links */
-        .external-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .external-links a {
+        /* [M5] Top Right Contacts Trigger Button */
+        .contacts-trigger {
+            background: transparent;
+            border: 1px solid #262626;
             color: #aaaaaa;
-            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
-            transition: color 0.2s;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .external-links a:hover {
+        .contacts-trigger:hover {
+            background: #161616;
             color: #ffffff;
+            border-color: #444;
         }
 
         /* [M6] Central Window Card */
@@ -107,7 +102,7 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.7);
             width: 100%;
             max-width: 900px;
-            height: 480px;
+            height: 520px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -127,12 +122,13 @@
 
         /* [M8] Window Content Area / Tab Panes */
         .window-body {
-            padding: 3rem 4rem;
+            padding: 2.5rem 3.5rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             position: relative;
+            overflow-y: auto;
         }
 
         .tab-pane {
@@ -149,34 +145,107 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* [M9] Custom Introduction Typography Style */
-        .intro-title {
-            font-size: 2.25rem;
+        /* [M9] Work Tab Layout (Avatar + Intro) */
+        .work-container {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .avatar-box {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            border: 2px solid #333333;
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .intro-content h2 {
+            font-size: 2.2rem;
             font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.03em;
             color: #ffffff;
-            margin: 0 0 1.5rem 0;
-            max-width: 750px;
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.02em;
         }
 
-        .intro-title span {
-            color: #58a6ff;
-        }
-
-        .intro-meta {
-            font-size: 0.95rem;
+        .intro-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             color: #888888;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .intro-bullets li {
+            margin-bottom: 4px;
+        }
+
+        /* [M10] Credentials Tab Style */
+        .credentials-heading {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0 0 1rem 0;
+        }
+
+        .resume-upload-box {
+            background: #161616;
+            border: 1px dashed #333333;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-upload-box input[type="file"] {
+            display: none;
+        }
+
+        .upload-btn {
+            background: #222222;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: 1px solid #444;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+
+        .upload-btn:hover {
+            background: #333;
+        }
+
+        .cert-list {
+            list-style: none;
+            padding: 0;
             margin: 0;
         }
 
-        .intro-meta strong {
-            color: #dddddd;
-            font-weight: 500;
+        .cert-item {
+            background: #161616;
+            border: 1px solid #222222;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #cccccc;
         }
 
-        /* [M10] Projects Grid / List Style inside Window */
+        /* [M11] Projects Tab Style */
         .projects-heading {
             font-size: 1.5rem;
             font-weight: 600;
@@ -210,6 +279,80 @@
             color: #777777;
             font-family: monospace;
         }
+
+        /* [M12] Contacts Modal Sheet Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal-sheet {
+            background: #141414;
+            border: 1px solid #262626;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        .modal-sheet h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.25rem;
+            color: #ffffff;
+        }
+
+        .modal-sheet p {
+            color: #888888;
+            font-size: 0.9rem;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .contact-link-item {
+            display: block;
+            background: #1c1c1c;
+            border: 1px solid #2a2a2a;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .contact-link-item:hover {
+            background: #252525;
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: #777;
+            font-size: 1.25rem;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -221,43 +364,69 @@
         <header class="top-nav">
             <div class="brand-section">
                 <h1>UserInTouch</h1>
-                <p>CS & Cybersecurity student @ Central State | C++ programmer & technician</p>
             </div>
 
             <!-- [M4] -->
             <div class="pill-switcher">
                 <button class="tab-btn active" onclick="switchTab('work', this)">Work</button>
+                <button class="tab-btn" onclick="switchTab('credentials', this)">Credentials</button>
                 <button class="tab-btn" onclick="switchTab('info', this)">Info</button>
             </div>
 
             <!-- [M5] -->
-            <div class="external-links">
-                <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn ↗</a>
-                <a href="https://yourlink-to-resume.com" target="_blank">Resume ↗</a>
+            <div>
+                <button class="contacts-trigger" onclick="toggleContacts(true)">Contacts</button>
             </div>
         </header>
 
         <!-- [M6] -->
         <div class="window-card">
             
-            <!-- [M7] Window titlebar with dots removed -->
+            <!-- [M7] -->
             <div class="window-header"></div>
 
             <!-- [M8] -->
             <div class="window-body">
                 
-                <!-- [M9] Work Tab Pane (Default View) -->
+                <!-- [M9] Work Tab Pane -->
                 <div id="work" class="tab-pane active">
-                    <h2 class="intro-title">
-                        Hello, welcome to my portfolio, I am <span>UserInTouch.</span>
-                    </h2>
-                    <p class="intro-meta">
-                        I am a Sophomore majoring in Cybersecurity and Computer Science at Central State University.<br>
-                        <strong>C++ programmer & computer repair technician</strong> with hands-on technical experience.
-                    </p>
+                    <div class="work-container">
+                        <div class="avatar-box">
+                            <!-- Replace with your image link or filename -->
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Avatar">
+                        </div>
+                        <div class="intro-content">
+                            <h2>Welcome to my portfolio</h2>
+                            <ul class="intro-bullets">
+                                <li>Cybersecurity & Computer Science Student</li>
+                                <li>Honors College Emissary | Social Media Coordinator</li>
+                                <li>Alpha Lambda Delta Honor Society Member</li>
+                                <li>C++ programmer & computer repair technician</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- [M10] Info Tab Pane (Projects View) -->
+                <!-- [M10] Credentials Tab Pane -->
+                <div id="credentials" class="tab-pane">
+                    <h3 class="credentials-heading">Credentials & Resume</h3>
+                    
+                    <div class="resume-upload-box">
+                        <p style="margin: 0 0 10px 0; color: #888; font-size: 0.9rem;">Upload or View Your Resume PDF</p>
+                        <label class="upload-btn">
+                            Choose File <input type="file" id="resumeFile" accept=".pdf">
+                        </label>
+                        <span id="fileName" style="display:block; margin-top:8px; font-size:0.8rem; color:#aaa;"></span>
+                    </div>
+
+                    <h4 style="color:#fff; font-size: 1.1rem; margin: 1rem 0 0.5rem 0;">Certifications</h4>
+                    <ul class="cert-list">
+                        <li class="cert-item">CompTIA IT Fundamentals (ITF+)[cite: 10]</li>
+                        <li class="cert-item">IC3 Digital Literacy Certifications (Parts 1-3)[cite: 10]</li>
+                    </ul>
+                </div>
+
+                <!-- [M11] Info / Projects Tab Pane -->
                 <div id="info" class="tab-pane">
                     <h3 class="projects-heading">Featured Projects</h3>
                     
@@ -277,7 +446,26 @@
 
     </div>
 
-    <!-- [M11] Tab Switching Script Logic -->
+    <!-- [M12] Contacts Modal Sheet Overlay -->
+    <div id="contactsModal" class="modal-overlay" onclick="handleModalClick(event)">
+        <div class="modal-sheet">
+            <button class="close-modal" onclick="toggleContacts(false)">&times;</button>
+            <h3>Get in Touch</h3>
+            <p>Feel free to reach out via my professional channels.</p>
+            
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link-item">
+                LinkedIn ↗
+            </a>
+            <a href="mailto:professionalkojo@gmail.com" class="contact-link-item">
+                Email: professionalkojo@gmail.com[cite: 9]
+            </a>
+            <a href="tel:3175839028" class="contact-link-item">
+                Phone: (317) 583-9028[cite: 9]
+            </a>
+        </div>
+    </div>
+
+    <!-- [M13] Interactive Script Logic -->
     <script>
         function switchTab(tabId, buttonElement) {
             const panes = document.querySelectorAll('.tab-pane');
@@ -289,6 +477,28 @@
             document.getElementById(tabId).classList.add('active');
             buttonElement.classList.add('active');
         }
+
+        function toggleContacts(open) {
+            const modal = document.getElementById('contactsModal');
+            if (open) {
+                modal.classList.add('open');
+            } else {
+                modal.classList.remove('open');
+            }
+        }
+
+        function handleModalClick(event) {
+            if (event.target.id === 'contactsModal') {
+                toggleContacts(false);
+            }
+        }
+
+        // Display uploaded file name
+        document.getElementById('resumeFile').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                document.getElementById('fileName').textContent = "Selected: " + e.target.files[0].name;
+            }
+        });
     </script>
 </body>
 </html>
